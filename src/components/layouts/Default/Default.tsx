@@ -14,7 +14,7 @@ export const DefaultLayout: FC<DefaultLayoutProps> = (props) => {
         <div className={clsx('l-default', className)}>
             <header className={styles.header}></header>
             {children}
-            <footer className={styles.footer}></footer>         
+            <footer className={styles.footer}></footer>
         </div>
-    )
+    );
 };

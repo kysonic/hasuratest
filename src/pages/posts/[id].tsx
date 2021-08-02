@@ -1,6 +1,8 @@
 import { GetStaticProps } from 'next';
+import Link from 'next/link';
 import { DefaultLayout } from '../../components/layouts/Default/Default';
 import { Post } from '../api/posts';
+import PostComponent from '../../components/ui/Post/Post';
 
 export type PostPageProps = {
     post: Post;
@@ -9,9 +11,15 @@ export type PostPageProps = {
 export default function PostPage(props: PostPageProps) {
     const { post } = props;
 
-    return <DefaultLayout>
-        <PostComponent></PostComponent>
-    </DefaultLayout>;
+    return (
+        <DefaultLayout>
+            <PostComponent post={post} />
+            <br />
+            <Link href="/" passHref>
+                Go Back
+            </Link>
+        </DefaultLayout>
+    );
 }
 
 export async function getStaticPaths() {

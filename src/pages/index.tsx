@@ -1,9 +1,10 @@
 import { FC } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Post } from './api/posts';
 
-import styles from '../styles/Home.module.css';
+import styles from './Home.module.css';
 
 export type HomeProps = {
     data: Post[];
@@ -11,8 +12,6 @@ export type HomeProps = {
 
 export default function Home(props: HomeProps) {
     const { data } = props;
-
-    console.log(data);
 
     return (
         <div className={styles.container}>
@@ -26,9 +25,16 @@ export default function Home(props: HomeProps) {
             </Head>
 
             <main className={styles.main}>
+                <Image
+                    className={styles.picture}
+                    src="/Mickey.png"
+                    alt="Picture of the Mickey Mouse"
+                    width={447}
+                    height={587}
+                />
                 <section className={styles['posts-list']}>
                     {data.map((post) => (
-                        <Link href={`/posts/${post.id}`} key={post.id}>
+                        <Link href={`/posts/${post.id}`} key={post.id} passHref>
                             <div className={styles['posts-list-item']}>
                                 <div className={styles['posts-list-item-id']}>
                                     {post.id}
